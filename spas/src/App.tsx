@@ -21,29 +21,40 @@ export type Question = {
 const ALL_QUESTIONS: Question[] = [
   {
     id: 1,
-    text: "Пример вопроса 1. Какой сейчас цвет неба?",
+    text: "Что не относится к опасным факторам пожара, воздействующим на людей и имущество:",
     options: [
-      { id: "1a", text: "Синий", isCorrect: true },
-      { id: "1b", text: "Зелёный", isCorrect: false },
-      { id: "1c", text: "Красный", isCorrect: false },
+      { id: "1a", text: "Пламя и искры", isCorrect: false },
+      { id: "1b", text: "Повышенная температура окружающей среды", isCorrect: false },
+      { id: "1c", text: "Вынос высокого напряжения на токопроводящие части технологических установок", isCorrect: true },
+      { id: "1d", text: "Пониженная концентрация кислорода", isCorrect: false },
+      { id: "1e", text: "Повышенная концентрация токсичных продуктов горения и термического разложения", isCorrect: false },
     ],
   },
   {
     id: 2,
-    text: "Пример вопроса 2. Выберите правильное утверждение.",
+    text: "Время работы в средствах защиты кожи определяется",
     options: [
-      { id: "2a", text: "2 + 2 = 4", isCorrect: true },
-      { id: "2b", text: "2 + 2 = 5", isCorrect: false },
+      { id: "2a", text: "Физической нагрузкой и температурой окружающей среды", isCorrect: true },
+      { id: "2b", text: "Временем выполнения задачи по ликвидации ЧС", isCorrect: false },
+      { id: "2с", text: "Самочувствием спасателя и способностью продолжать работать", isCorrect: false },
     ],
   },
   {
     id: 3,
-    text: "Пример вопроса 3. Вопрос может иметь 4 варианта.",
+    text: "Что такое адаптация человека?",
     options: [
-      { id: "3a", text: "Вариант 1", isCorrect: false },
-      { id: "3b", text: "Вариант 2 (правильный)", isCorrect: true },
-      { id: "3c", text: "Вариант 3", isCorrect: false },
-      { id: "3d", text: "Вариант 4", isCorrect: false },
+      { id: "3a", text: "Протекание психических процессов в зависимости от состояния и явлений действительности", isCorrect: false },
+      { id: "3b", text: "Устойчивое психическое состояние человека в различных условиях", isCorrect: false },
+      { id: "3c", text: "Процесс приспособления человека к условиям внешней среды", isCorrect: true },
+    ],
+  },
+  {
+    id: 4,
+    text: "Какой максимально допустимый наклон насосной станции при работающем двигателе",
+    options: [
+      { id: "4a", text: "Не более 20 градусов", isCorrect: false },
+      { id: "4b", text: "Не более 30 градусов", isCorrect: true },
+      { id: "4c", text: "Не более 40 градусов", isCorrect: false },
     ],
   },
   // 👉 здесь продолжайте добавлять свои вопросы до 120–150 штук
@@ -114,16 +125,17 @@ export function App() {
   const isPassed = correctCount >= PASS_THRESHOLD;
 
   const handleAnswer = (optionId: string) => {
-    if (!currentQuestion) return;
+  if (!currentQuestion) return;
 
-    const questionId = currentQuestion.id;
-    setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
+  const questionId = currentQuestion.id;
+  setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
 
-    const isLast = currentIndex === questions.length - 1;
-    if (isLast) {
-      setIsFinished(true);
+  const isLast = currentIndex === questions.length - 1;
+  if (isLast) {
+    setIsFinished(true);
 
-      // Если находимся в Telegram, можем отправить результат боту
+    // Если находимся в Telegram, можем отправить результат боту
+    try {
       const tg = window.Telegram?.WebApp;
       if (tg && typeof tg.sendData === "function") {
         const payload = {
@@ -135,10 +147,14 @@ export function App() {
         };
         tg.sendData(JSON.stringify(payload));
       }
-    } else {
-      setCurrentIndex((prev) => prev + 1);
+    } catch (error) {
+      // Если sendData не работает — просто игнорируем, приложение продолжит работать
+      console.log("Telegram sendData не доступен или ошибка:", error);
     }
-  };
+  } else {
+    setCurrentIndex((prev) => prev + 1);
+  }
+};
 
   const handleRestart = () => {
     setQuestions(pickRandomQuestions(ALL_QUESTIONS, Math.min(QUESTION_COUNT, ALL_QUESTIONS.length)));
