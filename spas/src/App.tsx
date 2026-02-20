@@ -57,6 +57,92 @@ const ALL_QUESTIONS: Question[] = [
       { id: "4c", text: "Не более 40 градусов", isCorrect: false },
     ],
   },
+   {
+    id: 5,
+    text: "Пожар это -",
+    options: [
+      { id: "5a", text: "Сложный физико-химический процесс превращения компонентов горючей смеси в продукты сгорания с выделением теплового излучения, света и лучистой энергии", isCorrect: false },
+      { id: "5b", text: "Сложный физико-химический процесс причиняющий материальный ущерб, вред жизни и здоровью людей, интересам общества и государства", isCorrect: false },
+      { id: "5c", text: "Неконтролируемый физико-химический процесс превращения компонентов горючей смеси в продукты сгорания", isCorrect: false },
+      { id: "5d", text: "Неконтролируемое горение, причиняющее материальный ущерб, вред жизни и здоровью граждан, интересам общества и государства", isCorrect: true },
+    ],
+  },
+   {
+    id: 6,
+    text: "При аварии на хладокомбинате следует использовать",
+    options: [
+      { id: "6a", text: "Промышленный противогаз (коробка серого цвета)", isCorrect: true },
+      { id: "6b", text: "Промышленный противогаз (коробка желтого цвета)", isCorrect: false },
+      { id: "6c", text: "Достаточно использовать общевойсковой фильтрующий противогаз", isCorrect: false },
+    ],
+  },
+   {
+    id: 7,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+   {
+    id: 8,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+   {
+    id: 9,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+   {
+    id: 10,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+   {
+    id: 11,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+   {
+    id: 12,
+    text: "",
+    options: [
+      { id: "a", text: "", isCorrect: false },
+      { id: "b", text: "", isCorrect: false },
+      { id: "c", text: "", isCorrect: true },
+      { id: "d", text: "", isCorrect: false },
+      { id: "e", text: "", isCorrect: false },
+    ],
+  },
+  
   // 👉 здесь продолжайте добавлять свои вопросы до 120–150 штук
   // { id: 4, text: "...", options: [...] },
   // { id: 5, text: "...", options: [...] },
